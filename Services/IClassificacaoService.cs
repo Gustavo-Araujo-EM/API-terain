@@ -4,6 +4,6 @@ namespace api_terain.Services
 {
     public interface IClassificacaoService
     {
-        String ObterClassificacao(List<ModuloAutorizado> modulosAutorizados);
+        string ObterClassificacao(List<ModuloAutorizado> modulosAutorizados);
     }
 }

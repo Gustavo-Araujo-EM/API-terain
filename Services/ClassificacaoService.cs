@@ -1,10 +1,11 @@
-﻿using api_terain.model;
+﻿using api_terain.ENUMs;
+using api_terain.model;
 
 namespace api_terain.Services
 {
     public class ClassificacaoService : IClassificacaoService
     {
-        public String ObterClassificacao(List<ModuloAutorizado> modulosAutorizados)
+        public string ObterClassificacao(List<ModuloAutorizado> modulosAutorizados)
         {
             double classificacao = 0;
             foreach (var modulo in modulosAutorizados)
@@ -41,23 +42,23 @@ namespace api_terain.Services
 
             if (classificacao > 5761)
             {
-                return "diamante";
+                return EnumeradorClassificacao.Diamante.ToString();
             }
             else if (classificacao >= 3361 && classificacao <= 5760)
             {
-                return "ouro";
+                return EnumeradorClassificacao.Ouro.ToString();
             }
             else if (classificacao >= 1360 && classificacao <= 3360)
             {
-                return "prata";
+                return EnumeradorClassificacao.Prata.ToString();
             }
             else if (classificacao >= 800 && classificacao <= 1360)
             {
-                return "bronze";
+                return EnumeradorClassificacao.Bronze.ToString();
             }
             else
             {
-                return "niquel";
+                return EnumeradorClassificacao.Niquel.ToString();
             }
         }
     }
