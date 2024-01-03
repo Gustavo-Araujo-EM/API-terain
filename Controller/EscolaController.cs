@@ -11,9 +11,11 @@ namespace api_terain.controller
     [ApiController]
     public class EscolaController : ControllerBase
     {
-        private IConfiguration _configuration;
-        public EscolaController(IConfiguration configuration) {
+        private readonly IConfiguration _configuration;
+        private readonly IClassificacaoService _classificacaoService;
+        public EscolaController(IConfiguration configuration, IClassificacaoService classificacaoService) {
             _configuration = configuration;
+            _classificacaoService = classificacaoService;
         }
 
         [HttpGet]
@@ -45,7 +47,7 @@ namespace api_terain.controller
                         moduloAutorizados = escola.Conexoes.SelectMany(x => x.ModulosAutorizados).ToList(),
                     };
                     
-                    escolaDto.Classificacao = ClassificacaoService.ObterClassificacao(escolaDto.moduloAutorizados);
+                    escolaDto.Classificacao = _classificacaoService.ObterClassificacao(escolaDto.moduloAutorizados);
                     escolasDto.Add(escolaDto);
                 }
                 return Ok(escolasDto.Take(2));

@@ -2,9 +2,9 @@
 
 namespace api_terain.Services
 {
-    public static class ClassificacaoService
+    public class ClassificacaoService : IClassificacaoService
     {
-        public static String ObterClassificacao(List<ModuloAutorizado> modulosAutorizados)
+        public String ObterClassificacao(List<ModuloAutorizado> modulosAutorizados)
         {
             double classificacao = 0;
             foreach (var modulo in modulosAutorizados)
